@@ -306,7 +306,9 @@ func ParseRequestURIBytes(rawurl []byte) (*URL, error) {
 			port = "443"
 		}
 	}
-
+        // Fixed wechat image url bug, url like http://[::ffff:183.192.196.102]/mmsns/lVxxxxxx
+        host = strings.TrimSuffix(strings.TrimPrefix(host, "[::ffff:"), "]")
+        hostport = net.JoinHostPort(host, port)
 	return &URL{hostport, host, port, host2Domain(host), path}, nil
 }
 
@@ -710,7 +712,7 @@ func parseResponse(sv *serverConn, r *Request, rp *Response) (err error) {
 
 	//Check for http error code from config file
 	if config.HttpErrorCode > 0 && rp.Status == config.HttpErrorCode {
-		errl.Println("Requested http code is raised")
+		debug.Println("Requested http code is raised")
 		return CustomHttpErr
 	}
 

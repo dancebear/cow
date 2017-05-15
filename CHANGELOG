@@ -1,3 +1,25 @@
+0.9.8 (2016-06-19)
+    * Fix OTA support bug in shadowsocks (report by @defia)
+    * Fix WeChat image url problem (by @breath-co2 @haha1903)
+    * Fix connection reset detection (by @fgid)
+
+0.9.7 (2016-05-04)
+    * Support shadowsocks OTA
+
+0.9.6 (2015-06-07)
+    * Reload config by sending SIGUSR1 on Unix system
+    * Load blocked/direct/stat file from same directory as rc file by default
+    * Allow user to specify blocked/direct/stat file path
+    * Detect arm without vfp in install script.
+    * Fix estimate timeout bug
+
+0.9.5 (2015-05-12)
+    * Support new encryption method "chacha20" and "salsa20"
+    * Avoid biased parent proxy selection for hash load balacing
+    * Fix AirDrop on OS X when using PAC
+    * Fix failed start with corrupted stat file
+    * Support changing the estimate timeout target
+
 0.9.4 (2014-10-08)
     * Bug fix (#179): close stat file after load
 

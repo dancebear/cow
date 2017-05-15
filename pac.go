@@ -116,6 +116,11 @@ function host2Domain(host) {
 function FindProxyForURL(url, host) {
 	if (url.substring(0,4) == "ftp:")
 		return direct;
+	if (host.substring(0,7) == "::ffff:")
+		return direct;
+	if (host.indexOf(".local", host.length - 6) !== -1) {
+		return direct;
+	}
 	var domain = host2Domain(host);
 	if (host.length == domain.length) {
 		return directAcc[host] ? direct : httpProxy;
